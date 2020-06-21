@@ -1,6 +1,6 @@
 # Digitalocean kubernetes terraform script
 
-A terraform script to create a kubernetes cluster with necessary addons.
+A terraform script to create a kubernetes cluster with ingress controller, cert manager and metrics server
 
 ## Included components
 
@@ -9,7 +9,7 @@ A terraform script to create a kubernetes cluster with necessary addons.
 * Metrics server setup so that we can view pod and node memory/cpu usages using `kubectl top` command
 * Ingress and nginx ingress for setting up reverse proxy
 * Helm provider, for installing packages in the cluster using terraform
-* cert-manager setup in the cluster for automatically issuing ssl certificates to ingress endpoints
+* cert-manager setup in the cluster for automatically issuing ssl certificates to ingress endpoints using `latsencrypt`
 * A run.sh script to setup everything without worrying about terraform commands
 
 
@@ -25,13 +25,10 @@ A terraform script to create a kubernetes cluster with necessary addons.
 
 Clone the repo and modify the following:
 
-* open letsencrypt-issuer.yaml file and replace your email id in place of
-    `your_email@address.com`
-* open main.tf and tweak the variables as required or leave it as it is use
-    defaults
+* open letsencrypt-issuer.yaml file and replace your email id in place of `your_email@address.com`
+* open main.tf and tweak the variables as required or leave it to use defaults
 * login to doctl using `doctl auth`  command
-* open `run.sh` and replace `$CLUSTER` with name of your cluster as defined in
-    `main.tf` or export the cluster name as ``export CLUSTER=yourcluster``
+* open `run.sh` and replace `$CLUSTER` with name of your cluster as defined in `main.tf` or export the cluster name as ``export CLUSTER=yourcluster``
 * initialize terraform using ``terraform init``
 
 Run the following command to create the cluster
