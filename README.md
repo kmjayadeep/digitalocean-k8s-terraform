@@ -1,6 +1,7 @@
 # Digitalocean kubernetes terraform script
 
-A terraform script to create a kubernetes cluster with ingress controller, cert manager and metrics server
+A terraform script to create a kubernetes cluster with ingress controller, cert manager and metrics server. 
+Contains all the necessary components to start depoying production ready applications
 
 ## Included components
 
